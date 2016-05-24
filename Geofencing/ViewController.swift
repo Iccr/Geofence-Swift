@@ -9,23 +9,11 @@
 import UIKit
 import MapKit
 import CoreLocation
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegate {
 
    var locationManager = CLLocationManager()
 
     @IBOutlet weak var mpView: MKMapView!
-    
-//    @IBAction func btnAddPin(sender: UILongPressGestureRecognizer) {
-//        let location = sender.locationInView(mpView)
-//        let locationCordinate = self.mpView.convertPoint(location, toCoordinateFromView: self.mpView)
-//        let annotation = MKPointAnnotation()
-//        annotation.coordinate = locationCordinate
-//        
-//        annotation.title = "test location"
-//        self.mpView.addAnnotation(annotation)
-//    }
-//    
-   
     
    
     override func viewDidLoad() {
@@ -42,12 +30,26 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-   
+    func userdidAddRegion(region: PolyRegion) {
+        
+        
+        let annotationLocations = region.vertices
+        print(region.vertices.count)
+        for location in annotationLocations{
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = location
+            annotation.title = region.title
+            mpView.addAnnotation(annotation)
+        }
+    }
+    
     @IBAction func addRegion(sender: AnyObject) {
         
-        let addRegionViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AddRegionViewController")
+        let addRegionViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AddRegionViewController") as! AddRegionViewController
+        addRegionViewController.delegate = self
+        
 //        let nav = UINavigationController.init(rootViewController: addRegionViewController!)
-        self.navigationController?.pushViewController(addRegionViewController!, animated: true)
+        self.navigationController?.pushViewController(addRegionViewController, animated: true)
     }
 
 

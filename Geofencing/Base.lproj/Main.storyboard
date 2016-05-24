@@ -18,11 +18,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AQE-Az-upf">
-                                <rect key="frame" x="0.0" y="70" width="320" height="319"/>
+                                <rect key="frame" x="0.0" y="59" width="320" height="355"/>
                                 <gestureRecognizers/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wvw-4L-pNE">
-                                <rect key="frame" x="51" y="397" width="79" height="30"/>
+                                <rect key="frame" x="121" y="422" width="79" height="30"/>
                                 <state key="normal" title="Add Region"/>
                                 <connections>
                                     <action selector="addRegion:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NtA-bZ-UsJ"/>
@@ -60,6 +60,13 @@
                                     <outletCollection property="gestureRecognizers" destination="RmN-Yz-syD" appends="YES" id="Seq-Qn-01A"/>
                                 </connections>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jY2-ix-fvH">
+                                <rect key="frame" x="69" y="398" width="138" height="30"/>
+                                <state key="normal" title="Add Title to location"/>
+                                <connections>
+                                    <action selector="btnAddTitle:" destination="Wub-mE-lxv" eventType="touchUpInside" id="AFw-K0-pgy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -77,6 +84,41 @@
                 </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1562" y="351"/>
+        </scene>
+        <!--Location Title View Controller-->
+        <scene sceneID="atd-A1-foa">
+            <objects>
+                <viewController storyboardIdentifier="LocationTitleViewController" id="cxP-J7-oNm" customClass="LocationTitleViewController" customModule="Geofencing" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ba0-95-4KT"/>
+                        <viewControllerLayoutGuide type="bottom" id="tsV-jy-0V9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Gyc-fD-Tuf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Set Title to Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kN-Jw-hls">
+                                <rect key="frame" x="24" y="36" width="272" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Dw-Bt-SRh">
+                                <rect key="frame" x="68" y="98" width="185" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="txtTitle" destination="3Dw-Bt-SRh" id="INN-KR-37W"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Vm-E2-Edh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1911" y="351"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AAv-bO-kCR">

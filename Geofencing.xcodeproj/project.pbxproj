@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		900CB0E31CF41DF000AB91C1 /* LocationTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CB0E21CF41DF000AB91C1 /* LocationTitleViewController.swift */; };
 		90F5B53D1CF2E57A004376DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F5B53C1CF2E57A004376DC /* AppDelegate.swift */; };
 		90F5B53F1CF2E57A004376DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F5B53E1CF2E57A004376DC /* ViewController.swift */; };
 		90F5B5421CF2E57A004376DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90F5B5401CF2E57A004376DC /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		900CB0E21CF41DF000AB91C1 /* LocationTitleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTitleViewController.swift; sourceTree = "<group>"; };
 		90F5B5391CF2E57A004376DC /* Geofencing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Geofencing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90F5B53C1CF2E57A004376DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90F5B53E1CF2E57A004376DC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				90F5B5451CF2E57A004376DC /* LaunchScreen.storyboard */,
 				90F5B5481CF2E57A004376DC /* Info.plist */,
 				90F5B56E1CF317B7004376DC /* AddRegionViewController.swift */,
+				900CB0E21CF41DF000AB91C1 /* LocationTitleViewController.swift */,
 			);
 			path = Geofencing;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 			files = (
 				90F5B56F1CF317B7004376DC /* AddRegionViewController.swift in Sources */,
 				90F5B53F1CF2E57A004376DC /* ViewController.swift in Sources */,
+				900CB0E31CF41DF000AB91C1 /* LocationTitleViewController.swift in Sources */,
 				90F5B53D1CF2E57A004376DC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
