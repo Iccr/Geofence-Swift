@@ -14,6 +14,8 @@
 		90F5B5471CF2E57A004376DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90F5B5451CF2E57A004376DC /* LaunchScreen.storyboard */; };
 		90F5B5521CF2E57A004376DC /* GeofencingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F5B5511CF2E57A004376DC /* GeofencingTests.swift */; };
 		90F5B55D1CF2E57A004376DC /* GeofencingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F5B55C1CF2E57A004376DC /* GeofencingUITests.swift */; };
+		90F5B56B1CF2E8CD004376DC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90F5B56A1CF2E8CD004376DC /* MapKit.framework */; };
+		90F5B56F1CF317B7004376DC /* AddRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F5B56E1CF317B7004376DC /* AddRegionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		90F5B5581CF2E57A004376DC /* GeofencingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeofencingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		90F5B55C1CF2E57A004376DC /* GeofencingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofencingUITests.swift; sourceTree = "<group>"; };
 		90F5B55E1CF2E57A004376DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90F5B56A1CF2E8CD004376DC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		90F5B56E1CF317B7004376DC /* AddRegionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRegionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90F5B56B1CF2E8CD004376DC /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +82,7 @@
 		90F5B5301CF2E57A004376DC = {
 			isa = PBXGroup;
 			children = (
+				90F5B56A1CF2E8CD004376DC /* MapKit.framework */,
 				90F5B53B1CF2E57A004376DC /* Geofencing */,
 				90F5B5501CF2E57A004376DC /* GeofencingTests */,
 				90F5B55B1CF2E57A004376DC /* GeofencingUITests */,
@@ -103,6 +109,7 @@
 				90F5B5431CF2E57A004376DC /* Assets.xcassets */,
 				90F5B5451CF2E57A004376DC /* LaunchScreen.storyboard */,
 				90F5B5481CF2E57A004376DC /* Info.plist */,
+				90F5B56E1CF317B7004376DC /* AddRegionViewController.swift */,
 			);
 			path = Geofencing;
 			sourceTree = "<group>";
@@ -259,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90F5B56F1CF317B7004376DC /* AddRegionViewController.swift in Sources */,
 				90F5B53F1CF2E57A004376DC /* ViewController.swift in Sources */,
 				90F5B53D1CF2E57A004376DC /* AppDelegate.swift in Sources */,
 			);
@@ -487,6 +495,7 @@
 				90F5B5631CF2E57A004376DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		90F5B5641CF2E57A004376DC /* Build configuration list for PBXNativeTarget "GeofencingTests" */ = {
 			isa = XCConfigurationList;
@@ -495,6 +504,7 @@
 				90F5B5661CF2E57A004376DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		90F5B5671CF2E57A004376DC /* Build configuration list for PBXNativeTarget "GeofencingUITests" */ = {
 			isa = XCConfigurationList;
@@ -503,6 +513,7 @@
 				90F5B5691CF2E57A004376DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
