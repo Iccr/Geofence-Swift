@@ -10,19 +10,7 @@
     import MapKit
     
     
-    // struct that holds the coortinate of all the annotations placed for the location
-    struct PolyRegion {
-        var title = String()
-        var vertices = [CLLocationCoordinate2D]()
-        mutating func addVertice(vertice: CLLocationCoordinate2D){
-            self.vertices.append(vertice)
-        }
         
-        func Vertices()-> [CLLocationCoordinate2D] {
-            return self.vertices
-        }
-    }
-    
     
     //protocol to take all the location information to other viewController
     protocol RegionDelegate {
@@ -32,10 +20,10 @@
     
     // main View controller
     class AddRegionViewController: UIViewController, RegionNameDelegate, MKMapViewDelegate {
-        var pointArray: Array<CGPoint> = []
+   
         var locationManager = CLLocationManager()
         @IBOutlet weak var mpView: MKMapView!
-        var allPoints: Array<CGPoint> = []
+      
         // protocols delegate
         var delegate:RegionDelegate? = nil
         

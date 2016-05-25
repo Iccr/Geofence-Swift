@@ -11,9 +11,10 @@ import MapKit
 import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegate, MKMapViewDelegate {
 
-   var locationManager = CLLocationManager()
+   
     @IBOutlet weak var mpView: MKMapView!
-    
+    var allLocationInfo = [PolyRegion]()
+    var locationManager = CLLocationManager()
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +42,41 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
             annotation.coordinate = locationCordinate
             
             self.mpView.addAnnotation(annotation)
+            var locationPoints = [CGPoint]()
+            for singleLocation in allLocationInfo{
+                var vertices = singleLocation.vertices
+                for vertex in vertices {
+                    locationPoints.append(self.mpView.convertCoordinate(vertex, toPointToView: self.mpView))
+                }
+            }
+            if(contains(locationPoints, test: location)){
+                print("it is inside a polygon")
+            }else{
+                print("the point is outside the polygon")
+            }
         }
 
     }
+    
+    func contains(polygon: [CGPoint], test: CGPoint) -> Bool {
+        if polygon.count <= 1 {
+            return false //or if first point = test -> return true
+        }
+        
+        let p = UIBezierPath()
+        let firstPoint = polygon[0] as CGPoint
+        
+        p.moveToPoint(firstPoint)
+        
+        for index in 1...polygon.count-1 {
+            p.addLineToPoint(polygon[index] as CGPoint)
+        }
+        
+        p.closePath()
+        
+        return p.containsPoint(test)
+    }
+
     func userdidAddRegion(region: PolyRegion) {
         if(region.vertices.count>2){
         let annotationLocations = region.vertices
@@ -56,6 +89,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
 //            
 //            
 //        }
+            allLocationInfo.append(region)
         var vertices = annotationLocations
         print(vertices)
         let line = MKPolygon(coordinates: &vertices, count: vertices.count)
