@@ -11,10 +11,21 @@ import MapKit
 import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegate, MKMapViewDelegate {
     
-    
     @IBOutlet weak var mpView: MKMapView!
+    @IBOutlet weak var btnFindMe: UIButton!
     @IBAction func btnFindMe(sender: UIButton) {
         centerMapOnLocation(center!)
+    }
+    @IBAction func mpType(sender: AnyObject) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            mpView.mapType = MKMapType.Satellite
+            break
+        case 1:
+            mpView.mapType = MKMapType.Standard
+        default:
+            mpView.mapType = MKMapType.Hybrid
+        }
     }
     var latitude: Double?
     var longitude: Double?
@@ -24,6 +35,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        btnFindMe.layer.cornerRadius =  0.5 * btnFindMe.bounds.size.width
+        print(btnFindMe.bounds.size.width)
         if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined{
             locationManager.requestAlwaysAuthorization()
         }
@@ -31,15 +44,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
         locationManager.delegate = self
         locationManager.startUpdatingLocation()
         
-        print(center)
+//        print(center)
         mpView.mapType = MKMapType.Hybrid
         mpView.showsUserLocation = true
         mpView.delegate = self
         
         latitude = locationManager.location?.coordinate.latitude
         longitude = locationManager.location?.coordinate.longitude
-        print(latitude!)
-        print(longitude!)
+//        print(latitude!)
+//        print(longitude!)
         center = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
         centerMapOnLocation(center!)
         
@@ -53,7 +66,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
-        print(location)
+//        print(location)
         latitude = location?.coordinate.latitude
         longitude = location?.coordinate.longitude
         center = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
@@ -117,17 +130,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
     func userdidAddRegion(region: PolyRegion) {
         if(region.vertices.count>2){
             let annotationLocations = region.vertices
-            print(region.vertices.count)
+//            print(region.vertices.count)
             allLocationInfo.append(region)
             var vertices = annotationLocations
-            print(vertices)
+//            print(vertices)
             let line = MKPolygon(coordinates: &vertices, count: vertices.count)
             mpView.addOverlays([line], level: .AboveRoads)
         }else{ print("no polygon detected")}
     }
     
     func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
-        print("poly renderer")
+//        print("poly renderer")
         let polylineRenderer = MKPolygonRenderer(overlay: overlay)
         polylineRenderer.strokeColor = UIColor.blueColor()
         polylineRenderer.lineWidth = 4

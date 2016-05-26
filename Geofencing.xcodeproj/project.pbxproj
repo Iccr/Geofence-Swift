@@ -108,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				90F5B53C1CF2E57A004376DC /* AppDelegate.swift */,
+				900992741CF6DDD200F9EF0E /* ViewController.swift */,
 				90F5B5401CF2E57A004376DC /* Main.storyboard */,
 				90F5B5431CF2E57A004376DC /* Assets.xcassets */,
 				90F5B5451CF2E57A004376DC /* LaunchScreen.storyboard */,
@@ -115,7 +116,6 @@
 				90F5B56E1CF317B7004376DC /* AddRegionViewController.swift */,
 				900CB0E21CF41DF000AB91C1 /* LocationTitleViewController.swift */,
 				908D36801CF56CCC00350850 /* PolyRegion.swift */,
-				900992741CF6DDD200F9EF0E /* ViewController.swift */,
 			);
 			path = Geofencing;
 			sourceTree = "<group>";

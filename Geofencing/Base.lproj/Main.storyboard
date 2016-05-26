@@ -25,28 +25,35 @@
                                 </connections>
                             </mapView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="C2w-95-I5C">
-                                <rect key="frame" x="57" y="72" width="207" height="29"/>
+                                <rect key="frame" x="55" y="72" width="212" height="29"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <segments>
-                                    <segment title="Standard"/>
                                     <segment title="Satellite"/>
+                                    <segment title="Standard"/>
                                     <segment title="Hybrid"/>
                                 </segments>
-                            </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbK-sR-NDd">
-                                <rect key="frame" x="255" y="422" width="45" height="45"/>
-                                <state key="normal" image="locate_meScaled"/>
+                                <color key="tintColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <action selector="btnFindMe:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C5u-ed-nUQ"/>
+                                    <action selector="mpType:" destination="BYZ-38-t0r" eventType="valueChanged" id="mlv-hi-21o"/>
                                 </connections>
-                            </button>
+                            </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wvw-4L-pNE">
                                 <rect key="frame" x="46" y="424" width="111" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <state key="normal" title="Add Region">
-                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="addRegion:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NtA-bZ-UsJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbK-sR-NDd">
+                                <rect key="frame" x="252" y="424" width="28" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="locate_meScaled"/>
+                                <connections>
+                                    <action selector="btnFindMe:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C5u-ed-nUQ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -55,6 +62,7 @@
                     <navigationItem key="navigationItem" title="Maps" id="S5Q-0N-8Ea"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="btnFindMe" destination="wbK-sR-NDd" id="RFA-at-Lzp"/>
                         <outlet property="mpView" destination="AQE-Az-upf" id="DjS-Fb-Hk4"/>
                     </connections>
                 </viewController>
