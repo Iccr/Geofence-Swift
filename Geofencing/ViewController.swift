@@ -36,6 +36,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.BlackTranslucent
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+
         btnFindMe.layer.cornerRadius =  0.5 * btnFindMe.bounds.size.width
         btnAdd.layer.cornerRadius = 0.5 * btnAdd.bounds.size.width
         print(btnFindMe.bounds.size.width)
