@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Maps-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Geofencing" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,15 +18,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AQE-Az-upf">
-                                <rect key="frame" x="0.0" y="59" width="320" height="355"/>
+                                <rect key="frame" x="0.0" y="59" width="320" height="421"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="7gc-Do-Jyh" appends="YES" id="Rqe-Oq-fDd"/>
                                 </connections>
                             </mapView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="C2w-95-I5C">
+                                <rect key="frame" x="57" y="72" width="207" height="29"/>
+                                <segments>
+                                    <segment title="Standard"/>
+                                    <segment title="Satellite"/>
+                                    <segment title="Hybrid"/>
+                                </segments>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbK-sR-NDd">
+                                <rect key="frame" x="255" y="422" width="45" height="45"/>
+                                <state key="normal" image="locate_meScaled"/>
+                                <connections>
+                                    <action selector="btnFindMe:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C5u-ed-nUQ"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wvw-4L-pNE">
-                                <rect key="frame" x="121" y="422" width="79" height="30"/>
-                                <state key="normal" title="Add Region"/>
+                                <rect key="frame" x="46" y="424" width="111" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Add Region">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="addRegion:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NtA-bZ-UsJ"/>
                                 </connections>
@@ -34,7 +52,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="S5Q-0N-8Ea"/>
+                    <navigationItem key="navigationItem" title="Maps" id="S5Q-0N-8Ea"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="mpView" destination="AQE-Az-upf" id="DjS-Fb-Hk4"/>
@@ -148,4 +166,7 @@
             <point key="canvasLocation" x="340" y="351"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="locate_meScaled" width="45" height="45"/>
+    </resources>
 </document>

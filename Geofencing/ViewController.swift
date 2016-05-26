@@ -10,54 +10,57 @@ import UIKit
 import MapKit
 import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegate, MKMapViewDelegate {
-
-   
+    
+    
     @IBOutlet weak var mpView: MKMapView!
+    @IBAction func btnFindMe(sender: UIButton) {
+        centerMapOnLocation(center!)
+    }
     var latitude: Double?
     var longitude: Double?
-    
+    var center: CLLocationCoordinate2D?
     var allLocationInfo = [PolyRegion]()
     var locationManager = CLLocationManager()
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // show my location when the map appears.
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.delegate = self
-        
         if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined{
             locationManager.requestAlwaysAuthorization()
         }
-        
-        
-            locationManager.startUpdatingLocation()
-        
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.delegate = self
+        locationManager.startUpdatingLocation()
+      
+        print(center)
         mpView.mapType = MKMapType.Hybrid
         mpView.showsUserLocation = true
         mpView.delegate = self
         
+        latitude = locationManager.location?.coordinate.latitude
+        longitude = locationManager.location?.coordinate.longitude
+        print(latitude!)
+        print(longitude!)
+        center = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+        centerMapOnLocation(center!)
         
     }
     
     func centerMapOnLocation(location: CLLocationCoordinate2D){
-
         let region =   MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
         mpView.setRegion(region, animated: true)
+        
     }
     
-    func currentLocation() -> (Double, Double){
-        return (latitude!, longitude!)
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.last
+        print(location)
+        latitude = location?.coordinate.latitude
+        longitude = location?.coordinate.longitude
+        center = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
     }
     
-    func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
-        print("updating user location")
-        latitude = userLocation.coordinate.latitude
-        longitude = userLocation.coordinate.longitude
-        var center = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
-        centerMapOnLocation(center)
-    }
     
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -87,8 +90,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
                 print("the point is outside the polygon")
             }
         }
-
+        
     }
+    
+    
     
     func contains(polygon: [CGPoint], test: CGPoint) -> Bool {
         if polygon.count <= 1 {
@@ -108,24 +113,24 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
         
         return p.containsPoint(test)
     }
-
+    
     func userdidAddRegion(region: PolyRegion) {
         if(region.vertices.count>2){
-        let annotationLocations = region.vertices
-        print(region.vertices.count)
-//        for location in annotationLocations{
-//            let annotation = MKPointAnnotation()
-//            annotation.coordinate = location
-//            annotation.title = region.title
-//            mpView.addAnnotation(annotation)
-//            
-//            
-//        }
+            let annotationLocations = region.vertices
+            print(region.vertices.count)
+            //        for location in annotationLocations{
+            //            let annotation = MKPointAnnotation()
+            //            annotation.coordinate = location
+            //            annotation.title = region.title
+            //            mpView.addAnnotation(annotation)
+            //
+            //
+            //        }
             allLocationInfo.append(region)
-        var vertices = annotationLocations
-        print(vertices)
-        let line = MKPolygon(coordinates: &vertices, count: vertices.count)
-        mpView.addOverlays([line], level: .AboveRoads)
+            var vertices = annotationLocations
+            print(vertices)
+            let line = MKPolygon(coordinates: &vertices, count: vertices.count)
+            mpView.addOverlays([line], level: .AboveRoads)
         }else{ print("no polygon detected")}
     }
     
@@ -138,17 +143,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
         return polylineRenderer
     }
     
-
+    
     
     @IBAction func addRegion(sender: AnyObject) {
         
         let addRegionViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AddRegionViewController") as! AddRegionViewController
         addRegionViewController.delegate = self
         
-//        let nav = UINavigationController.init(rootViewController: addRegionViewController!)
+        //        let nav = UINavigationController.init(rootViewController: addRegionViewController!)
         self.navigationController?.pushViewController(addRegionViewController, animated: true)
     }
-
-
+    
+    
 }
 
