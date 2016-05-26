@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Maps-->
@@ -17,14 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AQE-Az-upf">
-                                <rect key="frame" x="0.0" y="59" width="320" height="421"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="7gc-Do-Jyh" appends="YES" id="Rqe-Oq-fDd"/>
-                                </connections>
-                            </mapView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="C2w-95-I5C">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="C2w-95-I5C">
                                 <rect key="frame" x="55" y="72" width="212" height="29"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <segments>
@@ -37,17 +31,32 @@
                                     <action selector="mpType:" destination="BYZ-38-t0r" eventType="valueChanged" id="mlv-hi-21o"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbK-sR-NDd">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AQE-Az-upf">
+                                <rect key="frame" x="0.0" y="59" width="320" height="421"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="7gc-Do-Jyh" appends="YES" id="Rqe-Oq-fDd"/>
+                                </connections>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbK-sR-NDd">
                                 <rect key="frame" x="252" y="424" width="28" height="30"/>
                                 <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="28" id="7cz-mH-ciX"/>
+                                    <constraint firstAttribute="height" constant="30" id="woT-GS-6qq"/>
+                                </constraints>
                                 <state key="normal" image="locate_meScaled"/>
                                 <connections>
                                     <action selector="btnFindMe:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C5u-ed-nUQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wvw-4L-pNE">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wvw-4L-pNE">
                                 <rect key="frame" x="25" y="409" width="45" height="45"/>
                                 <color key="backgroundColor" red="0.32156862745098042" green="0.74901960784313726" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="DGP-fn-AaU"/>
+                                    <constraint firstAttribute="width" constant="45" id="agC-rI-8ri"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <state key="normal" title="Add">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -58,6 +67,20 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="C2w-95-I5C" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="BIa-kG-QBb"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Wvw-4L-pNE" secondAttribute="bottom" constant="26" id="EoW-rN-umU"/>
+                            <constraint firstItem="AQE-Az-upf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="HYk-fr-ZkV"/>
+                            <constraint firstItem="C2w-95-I5C" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="39" id="Yyw-47-HrK"/>
+                            <constraint firstItem="Wvw-4L-pNE" firstAttribute="bottom" secondItem="wbK-sR-NDd" secondAttribute="bottom" id="YzF-JY-f9S"/>
+                            <constraint firstItem="AQE-Az-upf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="59" id="bxs-mA-ktT"/>
+                            <constraint firstItem="AQE-Az-upf" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="fW0-NM-fbV"/>
+                            <constraint firstAttribute="trailing" secondItem="AQE-Az-upf" secondAttribute="trailing" id="h9y-qf-fxa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wbK-sR-NDd" secondAttribute="trailing" constant="24" id="kVN-MS-vCT"/>
+                            <constraint firstItem="Wvw-4L-pNE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="9" id="p2i-C9-4wH"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Wvw-4L-pNE" secondAttribute="bottom" constant="26" id="sJK-lI-sQ8"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="wbK-sR-NDd" secondAttribute="bottom" constant="26" id="x01-t3-JDW"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Maps" id="S5Q-0N-8Ea"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
