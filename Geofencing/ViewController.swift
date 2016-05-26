@@ -11,6 +11,7 @@ import MapKit
 import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegate, MKMapViewDelegate {
     
+    @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var mpView: MKMapView!
     @IBOutlet weak var btnFindMe: UIButton!
     @IBAction func btnFindMe(sender: UIButton) {
@@ -36,6 +37,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         btnFindMe.layer.cornerRadius =  0.5 * btnFindMe.bounds.size.width
+        btnAdd.layer.cornerRadius = 0.5 * btnAdd.bounds.size.width
         print(btnFindMe.bounds.size.width)
         if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined{
             locationManager.requestAlwaysAuthorization()
