@@ -9,42 +9,46 @@
 import UIKit
 import MapKit
 import CoreLocation
+
 class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegate, MKMapViewDelegate {
     
+    var delta = 0.09
     @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var mpView: MKMapView!
     @IBOutlet weak var btnFindMe: UIButton!
-    @IBAction func btnFindMe(sender: UIButton) {
-        centerMapOnLocation(center!)
-    }
-    @IBAction func mpType(sender: AnyObject) {
-        switch sender.selectedSegmentIndex {
-        case 0:
-            mpView.mapType = MKMapType.Satellite
-            break
-        case 1:
-            mpView.mapType = MKMapType.Standard
-        default:
-            mpView.mapType = MKMapType.Hybrid
-        }
-    }
+    
+    @IBOutlet weak var zoomSlider: UISlider!
+    
+
+    
     var latitude: Double?
     var longitude: Double?
     var center: CLLocationCoordinate2D?
     var allLocationInfo = [PolyRegion]()
     var locationManager = CLLocationManager()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+//        var frame = zoomSlider.frame
+//        
+//        frame.origin = CGPoint(x: self.view.bounds.size.width - (zoomSlider.frame.size.width + 16), y: self.view.bounds.size.height/2 - (zoomSlider.frame.size.height))
+//        zoomSlider.frame = frame
+        
+//       let ConstraintCenterx = NSLayoutConstraint(item: zoomSlider, attribute: NSLayoutAttribute.CenterXWithinMargins, relatedBy: .Equal, toItem: mpView, attribute: NSLayoutAttribute.CenterXWithinMargins, multiplier: 1, constant: 100)
+//        
+//        let ConstraintCentery = NSLayoutConstraint(item: zoomSlider, attribute: NSLayoutAttribute.CenterYWithinMargins
+//            , relatedBy: .Equal, toItem: mpView, attribute:NSLayoutAttribute.CenterXWithinMargins , multiplier: 1, constant: 0)
+//        self.view.addConstraint(ConstraintCentery)
+//        self.view.addConstraint(ConstraintCenterx)
         self.navigationController?.navigationBar.barStyle = UIBarStyle.BlackTranslucent
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
         btnFindMe.layer.cornerRadius =  0.5 * btnFindMe.bounds.size.width
         btnAdd.layer.cornerRadius = 0.5 * btnAdd.bounds.size.width
         print(btnFindMe.bounds.size.width)
-        if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined{
+        
             locationManager.requestAlwaysAuthorization()
-        }
+        
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.delegate = self
         locationManager.startUpdatingLocation()
@@ -63,23 +67,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
         
     }
     
-    func centerMapOnLocation(location: CLLocationCoordinate2D){
-        let region =   MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
-        mpView.setRegion(region, animated: true)
-        
-    }
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = locations.last
-        //        print(location)
-        latitude = location?.coordinate.latitude
-        longitude = location?.coordinate.longitude
-        center = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+    @IBAction func btnFindMe(sender: UIButton) {
+        centerMapOnLocation(center!)
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func mpType(sender: AnyObject) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            mpView.mapType = MKMapType.Satellite
+            break
+        case 1:
+            mpView.mapType = MKMapType.Standard
+        default:
+            mpView.mapType = MKMapType.Hybrid
+        }
     }
     
     @IBAction func btnTestPoint(sender: UILongPressGestureRecognizer) {
@@ -103,6 +104,34 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
                 print("the point is outside the polygon")
             }
         }
+    }
+    
+    @IBAction func addRegion(sender: AnyObject) {
+        
+        let addRegionViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AddRegionViewController") as! AddRegionViewController
+        addRegionViewController.delegate = self
+        self.navigationController?.pushViewController(addRegionViewController, animated: true)
+    }
+
+    
+    
+    func centerMapOnLocation(location: CLLocationCoordinate2D){
+        let region =   MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
+        mpView.setRegion(region, animated: true)
+        
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.last
+        //        print(location)
+        latitude = location?.coordinate.latitude
+        longitude = location?.coordinate.longitude
+        center = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     
@@ -141,12 +170,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
         return polylineRenderer
     }
     
-    @IBAction func addRegion(sender: AnyObject) {
-        
-        let addRegionViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AddRegionViewController") as! AddRegionViewController
-        addRegionViewController.delegate = self
-        self.navigationController?.pushViewController(addRegionViewController, animated: true)
-    }
     
     
 }

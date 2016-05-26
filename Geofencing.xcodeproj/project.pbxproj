@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		699F6D42A7F375563C48FFC3 /* Pods_Geofencing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D81F5D427C014F3CFB4AEB55 /* Pods_Geofencing.framework */; };
 		900992751CF6DDD200F9EF0E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900992741CF6DDD200F9EF0E /* ViewController.swift */; };
 		900CB0E31CF41DF000AB91C1 /* LocationTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900CB0E21CF41DF000AB91C1 /* LocationTitleViewController.swift */; };
 		908D36811CF56CCC00350850 /* PolyRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908D36801CF56CCC00350850 /* PolyRegion.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		45FD41BF9C7C27D80EFD3765 /* Pods-Geofencing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Geofencing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Geofencing/Pods-Geofencing.debug.xcconfig"; sourceTree = "<group>"; };
 		900992741CF6DDD200F9EF0E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		900CB0E21CF41DF000AB91C1 /* LocationTitleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTitleViewController.swift; sourceTree = "<group>"; };
 		908D36801CF56CCC00350850 /* PolyRegion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolyRegion.swift; sourceTree = "<group>"; };
@@ -55,6 +57,8 @@
 		90F5B55E1CF2E57A004376DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90F5B56A1CF2E8CD004376DC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		90F5B56E1CF317B7004376DC /* AddRegionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRegionViewController.swift; sourceTree = "<group>"; };
+		CA2C273D8E611547383F253F /* Pods-Geofencing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Geofencing.release.xcconfig"; path = "Pods/Target Support Files/Pods-Geofencing/Pods-Geofencing.release.xcconfig"; sourceTree = "<group>"; };
+		D81F5D427C014F3CFB4AEB55 /* Pods_Geofencing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Geofencing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				90F5B56B1CF2E8CD004376DC /* MapKit.framework in Frameworks */,
+				699F6D42A7F375563C48FFC3 /* Pods_Geofencing.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +96,8 @@
 				90F5B5501CF2E57A004376DC /* GeofencingTests */,
 				90F5B55B1CF2E57A004376DC /* GeofencingUITests */,
 				90F5B53A1CF2E57A004376DC /* Products */,
+				B6E0D6EC3434ABE58D69071D /* Pods */,
+				BC492C88EC12E22567E19EA5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,6 +145,23 @@
 			path = GeofencingUITests;
 			sourceTree = "<group>";
 		};
+		B6E0D6EC3434ABE58D69071D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				45FD41BF9C7C27D80EFD3765 /* Pods-Geofencing.debug.xcconfig */,
+				CA2C273D8E611547383F253F /* Pods-Geofencing.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BC492C88EC12E22567E19EA5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D81F5D427C014F3CFB4AEB55 /* Pods_Geofencing.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -145,9 +169,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 90F5B5611CF2E57A004376DC /* Build configuration list for PBXNativeTarget "Geofencing" */;
 			buildPhases = (
+				33F2F13F75429AB0B7885796 /* Check Pods Manifest.lock */,
 				90F5B5351CF2E57A004376DC /* Sources */,
 				90F5B5361CF2E57A004376DC /* Frameworks */,
 				90F5B5371CF2E57A004376DC /* Resources */,
+				1739DCA6788082F06F56C413 /* Embed Pods Frameworks */,
+				BCF0FF0C0234AAAC4B9EA679 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -266,6 +293,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1739DCA6788082F06F56C413 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Geofencing/Pods-Geofencing-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		33F2F13F75429AB0B7885796 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BCF0FF0C0234AAAC4B9EA679 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Geofencing/Pods-Geofencing-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		90F5B5351CF2E57A004376DC /* Sources */ = {
@@ -418,6 +493,7 @@
 		};
 		90F5B5621CF2E57A004376DC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 45FD41BF9C7C27D80EFD3765 /* Pods-Geofencing.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Geofencing/Info.plist;
@@ -429,6 +505,7 @@
 		};
 		90F5B5631CF2E57A004376DC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA2C273D8E611547383F253F /* Pods-Geofencing.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Geofencing/Info.plist;
