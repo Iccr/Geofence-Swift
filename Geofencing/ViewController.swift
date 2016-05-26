@@ -118,14 +118,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
         if(region.vertices.count>2){
             let annotationLocations = region.vertices
             print(region.vertices.count)
-            //        for location in annotationLocations{
-            //            let annotation = MKPointAnnotation()
-            //            annotation.coordinate = location
-            //            annotation.title = region.title
-            //            mpView.addAnnotation(annotation)
-            //
-            //
-            //        }
             allLocationInfo.append(region)
             var vertices = annotationLocations
             print(vertices)
