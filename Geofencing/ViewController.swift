@@ -30,7 +30,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.delegate = self
         locationManager.startUpdatingLocation()
-      
+        
         print(center)
         mpView.mapType = MKMapType.Hybrid
         mpView.showsUserLocation = true
