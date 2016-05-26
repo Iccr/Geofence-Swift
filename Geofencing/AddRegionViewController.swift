@@ -36,6 +36,7 @@
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
             mpView.showsUserLocation = true
+            mpView.mapType = MKMapType.Satellite
             let rightBtn = UIBarButtonItem.init(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancel")
             self.navigationItem.rightBarButtonItem = rightBtn
             let saveBtn = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: "save")

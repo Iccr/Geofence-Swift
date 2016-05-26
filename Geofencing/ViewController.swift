@@ -13,6 +13,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
 
    
     @IBOutlet weak var mpView: MKMapView!
+    var latitude: Double?
+    var longitude: Double?
+    
     var allLocationInfo = [PolyRegion]()
     var locationManager = CLLocationManager()
    
@@ -20,11 +23,40 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
         super.viewDidLoad()
         // show my location when the map appears.
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        locationManager.requestWhenInUseAuthorization()
+        locationManager.delegate = self
+        
+        if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined{
+            locationManager.requestAlwaysAuthorization()
+        }
+        
+        
+            locationManager.startUpdatingLocation()
+        
+        mpView.mapType = MKMapType.Hybrid
         mpView.showsUserLocation = true
         mpView.delegate = self
+        
+        
     }
+    
+    func centerMapOnLocation(location: CLLocationCoordinate2D){
+
+        let region =   MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
+        mpView.setRegion(region, animated: true)
+    }
+    
+    func currentLocation() -> (Double, Double){
+        return (latitude!, longitude!)
+    }
+    
+    func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
+        print("updating user location")
+        latitude = userLocation.coordinate.latitude
+        longitude = userLocation.coordinate.longitude
+        var center = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+        centerMapOnLocation(center)
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
