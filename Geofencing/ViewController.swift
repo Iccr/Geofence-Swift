@@ -76,8 +76,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
     
     @IBAction func zoomSlider(sender: UISlider) {
         delta = sender.value
-        print(" delta is: \(delta)")
+       
         centerMapOnLocation(center!)
+        print("center inside slider is: \(center!)\n\n")
     }
     
     @IBAction func btnTestPoint(sender: UILongPressGestureRecognizer) {
@@ -167,7 +168,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
         return polylineRenderer
     }
     
-    
+    func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        print("region changed\n")
+        print("center is : \(mapView.centerCoordinate)\n")
+        center = mapView.centerCoordinate
+        
+        
+    }
     
 }
 
