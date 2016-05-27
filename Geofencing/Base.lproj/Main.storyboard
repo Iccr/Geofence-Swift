@@ -150,7 +150,7 @@
                                     <action selector="btnFindMe:" destination="Wub-mE-lxv" eventType="touchUpInside" id="kJE-jq-cPW"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="TVN-aH-E7O">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.29999999999999999" minValue="9.0000000000000006e-05" maxValue="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="TVN-aH-E7O">
                                 <rect key="frame" x="205" y="216" width="200" height="31"/>
                                 <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
