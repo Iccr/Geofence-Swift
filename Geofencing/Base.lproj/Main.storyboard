@@ -61,7 +61,7 @@
                                     <action selector="addRegion:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NtA-bZ-UsJ"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.10000000000000001" minValue="9.0000000000000006e-05" maxValue="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="T4d-fs-mWN">
+                            <slider opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.10000000000000001" minValue="9.0000000000000006e-05" maxValue="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="T4d-fs-mWN">
                                 <rect key="frame" x="201" y="225" width="200" height="31"/>
                                 <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <rect key="contentStretch" x="1" y="1" width="1" height="1"/>
@@ -134,7 +134,7 @@
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jY2-ix-fvH">
                                 <rect key="frame" x="32" y="406" width="45" height="45"/>
-                                <color key="backgroundColor" red="0.27058823529411763" green="0.69019607843137254" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.3411764705882353" green="0.75294117647058822" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Detail"/>
@@ -144,11 +144,12 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fpe-UO-2Bj">
                                 <rect key="frame" x="240" y="406" width="45" height="45"/>
-                                <color key="backgroundColor" red="0.22352941176470589" green="0.61568627450980395" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.3411764705882353" green="0.75294117647058822" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" image="locate_meScaled"/>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="TVN-aH-E7O">
                                 <rect key="frame" x="205" y="216" width="200" height="31"/>
+                                <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="196" id="uUL-nb-90O"/>
                                 </constraints>
@@ -169,6 +170,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="btnDetail" destination="jY2-ix-fvH" id="Uxl-Na-4TR"/>
+                        <outlet property="btnFindMe" destination="Fpe-UO-2Bj" id="dbG-aR-pHV"/>
                         <outlet property="mpView" destination="vaJ-b3-Qiu" id="Mxj-La-xnF"/>
                     </connections>
                 </viewController>

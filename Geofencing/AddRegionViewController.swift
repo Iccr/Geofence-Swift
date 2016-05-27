@@ -25,6 +25,7 @@
         @IBOutlet weak var mpView: MKMapView!
         @IBOutlet weak var btnDetail: UIButton!
         
+        @IBOutlet weak var btnFindMe: UIButton!
         var delegate:RegionDelegate? = nil
         var polyRegion = PolyRegion()
         var locationManager = CLLocationManager()
@@ -34,7 +35,7 @@
         override func viewDidLoad() {
             super.viewDidLoad()
             btnDetail.layer.cornerRadius = 0.5 * btnDetail.bounds.size.width
-
+            btnFindMe.layer.cornerRadius = 0.5 * btnFindMe.bounds.size.width
             mpView.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
