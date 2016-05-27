@@ -25,6 +25,7 @@
         @IBOutlet weak var btnDetail: UIButton!
         @IBOutlet weak var btnFindMe: UIButton!
         
+        @IBOutlet weak var zoomSlider: UISlider!
         var annotationTitle: String?
         var latitude: Double?
         var longitude: Double?
@@ -37,7 +38,7 @@
         
         override func viewDidLoad() {
             super.viewDidLoad()
-
+            zoomSlider.setValue(delta, animated: false)
             mpView.delegate = self
             mpView.showsUserLocation = true
             mpView.mapType = MKMapType.Satellite

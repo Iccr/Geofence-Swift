@@ -178,6 +178,7 @@
                         <outlet property="btnDetail" destination="jY2-ix-fvH" id="Uxl-Na-4TR"/>
                         <outlet property="btnFindMe" destination="Fpe-UO-2Bj" id="dbG-aR-pHV"/>
                         <outlet property="mpView" destination="vaJ-b3-Qiu" id="Mxj-La-xnF"/>
+                        <outlet property="zoomSlider" destination="TVN-aH-E7O" id="OzM-bk-x21"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MZS-gi-cZT" userLabel="First Responder" sceneMemberID="firstResponder"/>
