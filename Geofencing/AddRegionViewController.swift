@@ -21,48 +21,52 @@
     // main View controller
     class AddRegionViewController: UIViewController, RegionNameDelegate, MKMapViewDelegate {
         
-        
         @IBOutlet weak var mpView: MKMapView!
         @IBOutlet weak var btnDetail: UIButton!
-        
         @IBOutlet weak var btnFindMe: UIButton!
+        
+        var annotationTitle: String?
+        var latitude: Double?
+        var longitude: Double?
+        var center: CLLocationCoordinate2D?
+        var delta:Float = 0.09
         var delegate:RegionDelegate? = nil
+        
         var polyRegion = PolyRegion()
         var locationManager = CLLocationManager()
-        var annotationTitle: String?
-        
         
         override func viewDidLoad() {
             super.viewDidLoad()
-            btnDetail.layer.cornerRadius = 0.5 * btnDetail.bounds.size.width
-            btnFindMe.layer.cornerRadius = 0.5 * btnFindMe.bounds.size.width
+
             mpView.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.startUpdatingLocation()
             mpView.showsUserLocation = true
             mpView.mapType = MKMapType.Satellite
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+            latitude = locationManager.location?.coordinate.latitude
+            longitude = locationManager.location?.coordinate.longitude
+            center = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+            centerMapOnLocation(center!)
+            
+            btnDetail.layer.cornerRadius = 0.5 * btnDetail.bounds.size.width
+            btnFindMe.layer.cornerRadius = 0.5 * btnFindMe.bounds.size.width
             let rightBtn = UIBarButtonItem.init(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancel")
             self.navigationItem.rightBarButtonItem = rightBtn
             let saveBtn = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: "save")
             self.navigationItem.leftBarButtonItem = saveBtn
+            
         }
         
         
         @IBAction func btnAddPin(sender: UILongPressGestureRecognizer) {
             if sender.state == .Began{
                 let location = sender.locationInView(mpView)
-                
                 let locationCordinate = self.mpView.convertPoint(location, toCoordinateFromView: self.mpView)
                 polyRegion.addVertice(locationCordinate)
-                
-                
                 var vertices = polyRegion.Vertices()
                 print(vertices)
                 let line = MKPolygon(coordinates: &vertices, count: vertices.count)
-                
                 mpView.addOverlays([line], level: .AboveRoads)
-                
-                // create annotations and add
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = locationCordinate
                 self.mpView.addAnnotation(annotation)
@@ -74,29 +78,27 @@
             locationTitleViewController.delegate = self
             
             self.navigationController?.pushViewController(locationTitleViewController, animated: true)
-            
         }
         
+        @IBAction func btnFindMe(sender: UIButton) {
+            centerMapOnLocation(center!)
+        }
+        @IBAction func btnSlider(sender: UISlider) {
+            delta = sender.value
+            centerMapOnLocation(center!)
+        }
         
         func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
-            
             let polylineRenderer = MKPolygonRenderer(overlay: overlay)
             polylineRenderer.strokeColor = UIColor.blueColor()
             polylineRenderer.lineWidth = 4
             polylineRenderer.fillColor = UIColor.blueColor()
-            
-            
             return polylineRenderer
-            
         }
         
         func save(){
-            
-            
             self.delegate?.userdidAddRegion(self.polyRegion)
             self.navigationController?.popViewControllerAnimated(true)
-            
-            
         }
         
         
@@ -104,12 +106,16 @@
             if let navController = self.navigationController {
                 navController.popViewControllerAnimated(true)
             }
-            
         }
         
         func AddRegionTitle(title: String) {
             polyRegion.title = title
             annotationTitle = title
+        }
+        
+        func centerMapOnLocation(location: CLLocationCoordinate2D){
+            let region =   MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: CLLocationDegrees(delta), longitudeDelta: CLLocationDegrees(delta)))
+            mpView.setRegion(region, animated: true)
             
         }
         
@@ -117,9 +123,5 @@
             super.didReceiveMemoryWarning()
             
         }
-        
-        
-        
-        
     }
     
