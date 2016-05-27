@@ -29,16 +29,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initZoomSlider()
+        initNavigationMenu()
+        setBtnRadious()
+        initManager()
+        initMapView()
+    }
+    
+    func initZoomSlider(){
         zoomSlider.setValue(delta, animated: false)
-        
+    }
+    
+    func initNavigationMenu(){
         self.navigationController?.navigationBar.barStyle = UIBarStyle.BlackTranslucent
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        btnFindMe.layer.cornerRadius =  0.5 * btnFindMe.bounds.size.width
-        btnAdd.layer.cornerRadius = 0.5 * btnAdd.bounds.size.width
-        locationManager.requestAlwaysAuthorization()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.delegate = self
-        locationManager.startUpdatingLocation()
+    }
+    
+    func initMapView(){
         mpView.mapType = MKMapType.Hybrid
         mpView.showsUserLocation = true
         mpView.delegate = self
@@ -48,54 +55,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
         centerMapOnLocation(center!)
     }
     
-    
-    @IBAction func btnFindMe(sender: UIButton) {
-        centerMapOnLocation(center!)
-    }
-    @IBAction func mpType(sender: AnyObject) {
-        switch sender.selectedSegmentIndex {
-        case 0:
-            mpView.mapType = MKMapType.Satellite
-            break
-        case 1:
-            mpView.mapType = MKMapType.Standard
-        default:
-            mpView.mapType = MKMapType.Hybrid
-        }
+    func initManager(){
+        locationManager.requestAlwaysAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.delegate = self
+        locationManager.startUpdatingLocation()
     }
     
-    @IBAction func zoomSlider(sender: UISlider) {
-        delta = sender.value
-        centerMapOnLocation(center!)
-    }
-    
-    @IBAction func btnTestPoint(sender: UILongPressGestureRecognizer) {
-        if sender.state == .Began{
-            self.mpView.removeAnnotations(self.mpView.annotations)
-            let location = sender.locationInView(mpView)
-            let locationCordinate = self.mpView.convertPoint(location, toCoordinateFromView: self.mpView)
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = locationCordinate
-            self.mpView.addAnnotation(annotation)
-            var locationPoints = [CGPoint]()
-            for singleLocation in allLocationInfo{
-                let vertices = singleLocation.vertices
-                for vertex in vertices {
-                    locationPoints.append(self.mpView.convertCoordinate(vertex, toPointToView: self.mpView))
-                }
-            }
-            if(contains(locationPoints, test: location)){
-                print("it is inside a polygon")
-            }else{
-                print("the point is outside the polygon")
-            }
-        }
-    }
-    
-    @IBAction func addRegion(sender: AnyObject) {
-        let addRegionViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AddRegionViewController") as! AddRegionViewController
-        addRegionViewController.delegate = self
-        self.navigationController?.pushViewController(addRegionViewController, animated: true)
+    func setBtnRadious(){
+        btnFindMe.layer.cornerRadius =  0.5 * btnFindMe.bounds.size.width
+        btnAdd.layer.cornerRadius = 0.5 * btnAdd.bounds.size.width
     }
     
     func centerMapOnLocation(location: CLLocationCoordinate2D){
@@ -136,7 +105,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
             var vertices = annotationLocations
             let line = MKPolygon(coordinates: &vertices, count: vertices.count)
             mpView.addOverlays([line], level: .AboveRoads)
-            let annotation = MKPointAnnotation()
+            let annotation = MKPointAnnotation() //user abstract factory pattern here
             annotation.coordinate = region.Vertices().first!
             annotation.title = region.title
             mpView.addAnnotation(annotation)
@@ -154,6 +123,59 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
     
     func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         center = mapView.centerCoordinate
+    }
+    
+    func removeAnnotations(){
+        self.mpView.removeAnnotations(self.mpView.annotations)
+    }
+    
+    @IBAction func btnFindMe(sender: UIButton) {
+        centerMapOnLocation(center!)
+    }
+    @IBAction func mpType(sender: AnyObject) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            mpView.mapType = MKMapType.Satellite
+            break
+        case 1:
+            mpView.mapType = MKMapType.Standard
+        default:
+            mpView.mapType = MKMapType.Hybrid
+        }
+    }
+    
+    @IBAction func zoomSlider(sender: UISlider) {
+        delta = sender.value
+        centerMapOnLocation(center!)
+    }
+    
+    @IBAction func btnTestPoint(sender: UILongPressGestureRecognizer) {
+        if sender.state == .Began{
+            removeAnnotations()
+            let location = sender.locationInView(mpView)
+            let locationCordinate = self.mpView.convertPoint(location, toCoordinateFromView: self.mpView)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = locationCordinate
+            self.mpView.addAnnotation(annotation)
+            var locationPoints = [CGPoint]()
+            for singleLocation in allLocationInfo{
+                let vertices = singleLocation.vertices
+                for vertex in vertices {
+                    locationPoints.append(self.mpView.convertCoordinate(vertex, toPointToView: self.mpView))
+                }
+            }
+            if(contains(locationPoints, test: location)){
+                print("it is inside a polygon")
+            }else{
+                print("the point is outside the polygon")
+            }
+        }
+    }
+    
+    @IBAction func addRegion(sender: AnyObject) {
+        let addRegionViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AddRegionViewController") as! AddRegionViewController
+        addRegionViewController.delegate = self
+        self.navigationController?.pushViewController(addRegionViewController, animated: true)
     }
 }
 
