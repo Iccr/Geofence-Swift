@@ -126,15 +126,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vaJ-b3-Qiu">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="375"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="RmN-Yz-syD" appends="YES" id="Seq-Qn-01A"/>
                                 </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jY2-ix-fvH">
-                                <rect key="frame" x="69" y="398" width="138" height="30"/>
-                                <state key="normal" title="Add Title to location"/>
+                                <rect key="frame" x="137" y="406" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.27058823529411763" green="0.69019607843137254" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Detail"/>
                                 <connections>
                                     <action selector="btnAddTitle:" destination="Wub-mE-lxv" eventType="touchUpInside" id="AFw-K0-pgy"/>
                                 </connections>
