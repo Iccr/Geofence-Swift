@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="C2w-95-I5C">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="C2w-95-I5C">
                                 <rect key="frame" x="55" y="72" width="212" height="29"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <segments>
@@ -80,6 +80,8 @@
                             <constraint firstItem="T4d-fs-mWN" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="3PQ-dK-9V8"/>
                             <constraint firstAttribute="trailing" secondItem="AQE-Az-upf" secondAttribute="trailing" id="5En-hD-rxl"/>
                             <constraint firstItem="AQE-Az-upf" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="7yL-5q-ek7"/>
+                            <constraint firstItem="C2w-95-I5C" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="AHL-dx-W5T"/>
+                            <constraint firstItem="C2w-95-I5C" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="39" id="Dcm-oC-Nfl"/>
                             <constraint firstItem="T4d-fs-mWN" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="99" id="GcW-46-GZx"/>
                             <constraint firstItem="AQE-Az-upf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="IRO-tO-i5h"/>
                             <constraint firstItem="AQE-Az-upf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="59" id="Six-qz-j9P"/>
