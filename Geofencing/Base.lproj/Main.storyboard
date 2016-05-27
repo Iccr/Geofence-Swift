@@ -125,36 +125,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jY2-ix-fvH">
-                                <rect key="frame" x="32" y="406" width="45" height="45"/>
-                                <color key="backgroundColor" red="0.3411764705882353" green="0.75294117647058822" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Detail"/>
-                                <connections>
-                                    <action selector="btnAddTitle:" destination="Wub-mE-lxv" eventType="touchUpInside" id="AFw-K0-pgy"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fpe-UO-2Bj">
-                                <rect key="frame" x="240" y="406" width="45" height="45"/>
-                                <color key="backgroundColor" red="0.3411764705882353" green="0.75294117647058822" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" image="locate_meScaled"/>
-                                <connections>
-                                    <action selector="btnFindMe:" destination="Wub-mE-lxv" eventType="touchUpInside" id="kJE-jq-cPW"/>
-                                </connections>
-                            </button>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.29999999999999999" minValue="9.0000000000000006e-05" maxValue="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="TVN-aH-E7O">
-                                <rect key="frame" x="205" y="216" width="200" height="31"/>
-                                <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.transform.rotation.z">
-                                        <real key="value" value="-1.5700000000000001"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="btnSlider:" destination="Wub-mE-lxv" eventType="valueChanged" id="kzl-Md-9cJ"/>
-                                </connections>
-                            </slider>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vaJ-b3-Qiu">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <gestureRecognizers/>
@@ -162,13 +132,63 @@
                                     <outletCollection property="gestureRecognizers" destination="RmN-Yz-syD" appends="YES" id="Seq-Qn-01A"/>
                                 </connections>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jY2-ix-fvH">
+                                <rect key="frame" x="32" y="406" width="45" height="45"/>
+                                <color key="backgroundColor" red="0.3411764705882353" green="0.75294117647058822" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="MOn-h7-i9Z"/>
+                                    <constraint firstAttribute="height" constant="45" id="oKH-Ab-Y4B"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Detail"/>
+                                <connections>
+                                    <action selector="btnAddTitle:" destination="Wub-mE-lxv" eventType="touchUpInside" id="AFw-K0-pgy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fpe-UO-2Bj">
+                                <rect key="frame" x="240" y="406" width="45" height="45"/>
+                                <color key="backgroundColor" red="0.3411764705882353" green="0.75294117647058822" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="locate_meScaled"/>
+                                <connections>
+                                    <action selector="btnFindMe:" destination="Wub-mE-lxv" eventType="touchUpInside" id="kJE-jq-cPW"/>
+                                </connections>
+                            </button>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.10000000000000001" minValue="9.0000000000000006e-05" maxValue="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="TVN-aH-E7O">
+                                <rect key="frame" x="209" y="225" width="200" height="31"/>
+                                <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Sly-eJ-8mf"/>
+                                    <constraint firstAttribute="height" constant="30" id="Yty-N2-eDd"/>
+                                    <constraint firstAttribute="width" constant="196" id="tYb-nm-el8"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.transform.rotation.z">
+                                        <real key="value" value="-1.5700000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Sly-eJ-8mf"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="btnSlider:" destination="Wub-mE-lxv" eventType="valueChanged" id="kzl-Md-9cJ"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Fpe-UO-2Bj" secondAttribute="bottom" constant="29" id="0Rj-ng-FlS"/>
                             <constraint firstAttribute="trailing" secondItem="vaJ-b3-Qiu" secondAttribute="trailing" id="8hH-fX-HVg"/>
                             <constraint firstItem="vaJ-b3-Qiu" firstAttribute="leading" secondItem="RBb-vP-pnu" secondAttribute="leading" id="BTA-De-1mE"/>
                             <constraint firstItem="vaJ-b3-Qiu" firstAttribute="top" secondItem="RBb-vP-pnu" secondAttribute="top" id="E6V-eG-x3V"/>
+                            <constraint firstItem="jY2-ix-fvH" firstAttribute="leading" secondItem="RBb-vP-pnu" secondAttribute="leading" constant="32" id="Fe7-aD-CWi"/>
+                            <constraint firstItem="TVN-aH-E7O" firstAttribute="centerY" secondItem="vaJ-b3-Qiu" secondAttribute="centerY" id="Fex-1v-YGE"/>
                             <constraint firstItem="vaJ-b3-Qiu" firstAttribute="bottom" secondItem="ilN-Rz-adW" secondAttribute="top" id="VcZ-CQ-DuM"/>
+                            <constraint firstAttribute="trailing" secondItem="TVN-aH-E7O" secondAttribute="trailing" constant="-87" id="iy9-p5-iQl"/>
+                            <constraint firstAttribute="trailing" secondItem="Fpe-UO-2Bj" secondAttribute="trailing" constant="35" id="laa-9A-S5b"/>
+                            <constraint firstItem="Fpe-UO-2Bj" firstAttribute="centerY" secondItem="jY2-ix-fvH" secondAttribute="centerY" id="qJ7-bp-5r1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tV7-bY-wIS"/>
