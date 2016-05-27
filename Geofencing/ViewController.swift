@@ -159,7 +159,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
         }else{ print("no polygon detected")}
     }
     
-    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
         //        print("poly renderer")
         let polylineRenderer = MKPolygonRenderer(overlay: overlay)
         polylineRenderer.strokeColor = UIColor.blueColor()

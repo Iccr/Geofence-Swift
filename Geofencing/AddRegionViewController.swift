@@ -51,9 +51,9 @@
             
             btnDetail.layer.cornerRadius = 0.5 * btnDetail.bounds.size.width
             btnFindMe.layer.cornerRadius = 0.5 * btnFindMe.bounds.size.width
-            let rightBtn = UIBarButtonItem.init(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "cancel")
+            let rightBtn = UIBarButtonItem.init(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(AddRegionViewController.cancel))
             self.navigationItem.rightBarButtonItem = rightBtn
-            let saveBtn = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: "save")
+            let saveBtn = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: #selector(AddRegionViewController.save))
             self.navigationItem.leftBarButtonItem = saveBtn
             
         }
@@ -89,7 +89,7 @@
             centerMapOnLocation(center!)
         }
         
-        func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+        func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
             let polylineRenderer = MKPolygonRenderer(overlay: overlay)
             polylineRenderer.strokeColor = UIColor.blueColor()
             polylineRenderer.lineWidth = 4

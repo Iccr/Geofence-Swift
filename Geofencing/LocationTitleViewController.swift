@@ -21,7 +21,7 @@ class LocationTitleViewController: UIViewController {
     override func viewDidLoad() {
     
         super.viewDidLoad()
-        let btnSave = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: "save")
+        let btnSave = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: #selector(LocationTitleViewController.save))
         self.navigationItem.rightBarButtonItem = btnSave
         // Do any additional setup after loading the view.
     }
