@@ -33,13 +33,14 @@
                             </segmentedControl>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AQE-Az-upf">
                                 <rect key="frame" x="0.0" y="59" width="320" height="421"/>
+                                <color key="tintColor" red="0.94381816279999997" green="0.3337369637" blue="0.1559894805" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="7gc-Do-Jyh" appends="YES" id="Rqe-Oq-fDd"/>
                                 </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbK-sR-NDd">
-                                <rect key="frame" x="252" y="424" width="28" height="30"/>
+                                <rect key="frame" x="235" y="409" width="45" height="45"/>
                                 <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" image="locate_meScaled"/>
                                 <connections>
@@ -57,10 +58,12 @@
                                     <action selector="addRegion:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NtA-bZ-UsJ"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="T4d-fs-mWN">
-                                <rect key="frame" x="188" y="225" width="118" height="31"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.0050000000000000001" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="T4d-fs-mWN">
+                                <rect key="frame" x="226" y="225" width="160" height="31"/>
+                                <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="contentStretch" x="1" y="1" width="1" height="1"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="114" id="zba-6g-TCN"/>
+                                    <constraint firstAttribute="width" constant="156" id="zba-6g-TCN"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.transform.rotation.z">
@@ -72,7 +75,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="T4d-fs-mWN" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="3PQ-dK-9V8"/>
-                            <constraint firstItem="T4d-fs-mWN" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="GcW-46-GZx"/>
+                            <constraint firstItem="T4d-fs-mWN" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="80" id="GcW-46-GZx"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Maps" id="S5Q-0N-8Ea"/>
