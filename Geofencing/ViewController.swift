@@ -19,43 +19,33 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
     
     @IBOutlet weak var zoomSlider: UISlider!
     
-
+    
     
     var latitude: Double?
     var longitude: Double?
     var center: CLLocationCoordinate2D?
     var allLocationInfo = [PolyRegion]()
     var locationManager = CLLocationManager()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         zoomSlider.setValue(delta, animated: false)
         
         self.navigationController?.navigationBar.barStyle = UIBarStyle.BlackTranslucent
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        
         btnFindMe.layer.cornerRadius =  0.5 * btnFindMe.bounds.size.width
         btnAdd.layer.cornerRadius = 0.5 * btnAdd.bounds.size.width
-        print(btnFindMe.bounds.size.width)
-        
-            locationManager.requestAlwaysAuthorization()
-        
+        locationManager.requestAlwaysAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.delegate = self
         locationManager.startUpdatingLocation()
-        
-        //        print(center)
         mpView.mapType = MKMapType.Hybrid
         mpView.showsUserLocation = true
         mpView.delegate = self
-        
         latitude = locationManager.location?.coordinate.latitude
         longitude = locationManager.location?.coordinate.longitude
-        //        print(latitude!)
-        //        print(longitude!)
         center = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
         centerMapOnLocation(center!)
-        
     }
     
     
@@ -76,9 +66,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
     
     @IBAction func zoomSlider(sender: UISlider) {
         delta = sender.value
-       
         centerMapOnLocation(center!)
-        print("center inside slider is: \(center!)\n\n")
     }
     
     @IBAction func btnTestPoint(sender: UILongPressGestureRecognizer) {
@@ -105,23 +93,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
     }
     
     @IBAction func addRegion(sender: AnyObject) {
-        
         let addRegionViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AddRegionViewController") as! AddRegionViewController
         addRegionViewController.delegate = self
         self.navigationController?.pushViewController(addRegionViewController, animated: true)
     }
-
-    
     
     func centerMapOnLocation(location: CLLocationCoordinate2D){
         let region =   MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: CLLocationDegrees(delta), longitudeDelta: CLLocationDegrees(delta)))
         mpView.setRegion(region, animated: true)
-        
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
-        //        print(location)
         latitude = location?.coordinate.latitude
         longitude = location?.coordinate.longitude
         center = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
@@ -129,7 +112,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
@@ -150,10 +132,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
     func userdidAddRegion(region: PolyRegion) {
         if(region.vertices.count>2){
             let annotationLocations = region.vertices
-            //            print(region.vertices.count)
             allLocationInfo.append(region)
             var vertices = annotationLocations
-            //            print(vertices)
             let line = MKPolygon(coordinates: &vertices, count: vertices.count)
             mpView.addOverlays([line], level: .AboveRoads)
             let annotation = MKPointAnnotation()
@@ -165,7 +145,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
     }
     
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
-        //        print("poly renderer")
         let polylineRenderer = MKPolygonRenderer(overlay: overlay)
         polylineRenderer.strokeColor = UIColor.blueColor()
         polylineRenderer.lineWidth = 4
@@ -174,12 +153,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
     }
     
     func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        print("region changed\n")
-        print("center is : \(mapView.centerCoordinate)\n")
         center = mapView.centerCoordinate
-        
-        
     }
-    
 }
 

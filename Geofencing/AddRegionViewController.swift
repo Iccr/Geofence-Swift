@@ -9,14 +9,11 @@
     import UIKit
     import MapKit
     
-    
-    
-    
+
     //protocol to take all the location information to other viewController
     protocol RegionDelegate {
         func userdidAddRegion(region:PolyRegion)
     }
-    
     
     // main View controller
     class AddRegionViewController: UIViewController, RegionNameDelegate, MKMapViewDelegate {
@@ -48,13 +45,10 @@
             longitude = locationManager.location?.coordinate.longitude
             center = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
             centerMapOnLocation(center!)
-            
             btnDetail.layer.cornerRadius = 0.5 * btnDetail.bounds.size.width
             btnFindMe.layer.cornerRadius = 0.5 * btnFindMe.bounds.size.width
-  
             let saveBtn = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: #selector(AddRegionViewController.save))
             self.navigationItem.rightBarButtonItem = saveBtn
-            
         }
         
         
@@ -64,7 +58,6 @@
                 let locationCordinate = self.mpView.convertPoint(location, toCoordinateFromView: self.mpView)
                 polyRegion.addVertice(locationCordinate)
                 var vertices = polyRegion.Vertices()
-                print(vertices)
                 let line = MKPolygon(coordinates: &vertices, count: vertices.count)
                 mpView.addOverlays([line], level: .AboveRoads)
                 let annotation = MKPointAnnotation()
@@ -76,7 +69,6 @@
         @IBAction func btnAddTitle(sender: AnyObject) {
             let locationTitleViewController = self.storyboard?.instantiateViewControllerWithIdentifier("LocationTitleViewController") as! LocationTitleViewController
             locationTitleViewController.delegate = self
-            
             self.navigationController?.pushViewController(locationTitleViewController, animated: true)
         }
         
@@ -101,7 +93,6 @@
             self.navigationController?.popViewControllerAnimated(true)
         }
         
-        
         func cancel() {
             if let navController = self.navigationController {
                 navController.popViewControllerAnimated(true)
@@ -116,7 +107,6 @@
         func centerMapOnLocation(location: CLLocationCoordinate2D){
             let region =   MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: CLLocationDegrees(delta), longitudeDelta: CLLocationDegrees(delta)))
             mpView.setRegion(region, animated: true)
-            
         }
         
         override func didReceiveMemoryWarning() {
