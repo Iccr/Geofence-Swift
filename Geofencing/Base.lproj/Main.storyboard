@@ -58,24 +58,27 @@
                                     <action selector="addRegion:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NtA-bZ-UsJ"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.0050000000000000001" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="T4d-fs-mWN">
-                                <rect key="frame" x="226" y="225" width="160" height="31"/>
+                            <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.10000000000000001" minValue="9.0000000000000006e-05" maxValue="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="T4d-fs-mWN">
+                                <rect key="frame" x="201" y="225" width="200" height="31"/>
                                 <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <rect key="contentStretch" x="1" y="1" width="1" height="1"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="156" id="zba-6g-TCN"/>
+                                    <constraint firstAttribute="width" constant="196" id="zba-6g-TCN"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.transform.rotation.z">
                                         <real key="value" value="-1.571"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="zoomSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="a2H-jk-biW"/>
+                                </connections>
                             </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="T4d-fs-mWN" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="3PQ-dK-9V8"/>
-                            <constraint firstItem="T4d-fs-mWN" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="80" id="GcW-46-GZx"/>
+                            <constraint firstItem="T4d-fs-mWN" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="99" id="GcW-46-GZx"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Maps" id="S5Q-0N-8Ea"/>

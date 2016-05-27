@@ -12,7 +12,7 @@ import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegate, MKMapViewDelegate {
     
-    var delta = 0.09
+    var delta:Float = 0.09
     @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var mpView: MKMapView!
     @IBOutlet weak var btnFindMe: UIButton!
@@ -29,17 +29,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        var frame = zoomSlider.frame
-//        
-//        frame.origin = CGPoint(x: self.view.bounds.size.width - (zoomSlider.frame.size.width + 16), y: self.view.bounds.size.height/2 - (zoomSlider.frame.size.height))
-//        zoomSlider.frame = frame
+        zoomSlider.setValue(delta, animated: false)
         
-//       let ConstraintCenterx = NSLayoutConstraint(item: zoomSlider, attribute: NSLayoutAttribute.CenterXWithinMargins, relatedBy: .Equal, toItem: mpView, attribute: NSLayoutAttribute.CenterXWithinMargins, multiplier: 1, constant: 100)
-//        
-//        let ConstraintCentery = NSLayoutConstraint(item: zoomSlider, attribute: NSLayoutAttribute.CenterYWithinMargins
-//            , relatedBy: .Equal, toItem: mpView, attribute:NSLayoutAttribute.CenterXWithinMargins , multiplier: 1, constant: 0)
-//        self.view.addConstraint(ConstraintCentery)
-//        self.view.addConstraint(ConstraintCenterx)
         self.navigationController?.navigationBar.barStyle = UIBarStyle.BlackTranslucent
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
@@ -83,6 +74,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
         }
     }
     
+    @IBAction func zoomSlider(sender: UISlider) {
+        delta = sender.value
+        print(" delta is: \(delta)")
+        centerMapOnLocation(center!)
+    }
+    
     @IBAction func btnTestPoint(sender: UILongPressGestureRecognizer) {
         if sender.state == .Began{
             self.mpView.removeAnnotations(self.mpView.annotations)
@@ -116,7 +113,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
     
     
     func centerMapOnLocation(location: CLLocationCoordinate2D){
-        let region =   MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
+        let region =   MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: CLLocationDegrees(delta), longitudeDelta: CLLocationDegrees(delta)))
         mpView.setRegion(region, animated: true)
         
     }
