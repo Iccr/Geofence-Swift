@@ -156,6 +156,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
             //            print(vertices)
             let line = MKPolygon(coordinates: &vertices, count: vertices.count)
             mpView.addOverlays([line], level: .AboveRoads)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = region.Vertices().first!
+            annotation.title = region.title
+            mpView.addAnnotation(annotation)
+            
         }else{ print("no polygon detected")}
     }
     
