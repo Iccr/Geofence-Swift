@@ -10,7 +10,7 @@
     import MapKit
     
     
-        
+    
     
     //protocol to take all the location information to other viewController
     protocol RegionDelegate {
@@ -20,18 +20,21 @@
     
     // main View controller
     class AddRegionViewController: UIViewController, RegionNameDelegate, MKMapViewDelegate {
-   
-        var locationManager = CLLocationManager()
-        @IBOutlet weak var mpView: MKMapView!
-      
-        // protocols delegate
-        var delegate:RegionDelegate? = nil
         
-        //holds all the coordinate for the location
+        
+        @IBOutlet weak var mpView: MKMapView!
+        @IBOutlet weak var btnDetail: UIButton!
+        
+        var delegate:RegionDelegate? = nil
         var polyRegion = PolyRegion()
+        var locationManager = CLLocationManager()
         var annotationTitle: String?
+        
+        
         override func viewDidLoad() {
             super.viewDidLoad()
+            btnDetail.layer.cornerRadius = 0.5 * btnDetail.bounds.size.width
+
             mpView.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
@@ -42,8 +45,6 @@
             let saveBtn = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: "save")
             self.navigationItem.leftBarButtonItem = saveBtn
         }
-        
-        
         
         
         @IBAction func btnAddPin(sender: UILongPressGestureRecognizer) {
@@ -67,6 +68,13 @@
             }
         }
         
+        @IBAction func btnAddTitle(sender: AnyObject) {
+            let locationTitleViewController = self.storyboard?.instantiateViewControllerWithIdentifier("LocationTitleViewController") as! LocationTitleViewController
+            locationTitleViewController.delegate = self
+            
+            self.navigationController?.pushViewController(locationTitleViewController, animated: true)
+            
+        }
         
         
         func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
@@ -106,14 +114,6 @@
         
         override func didReceiveMemoryWarning() {
             super.didReceiveMemoryWarning()
-            
-        }
-        
-        @IBAction func btnAddTitle(sender: AnyObject) {
-            let locationTitleViewController = self.storyboard?.instantiateViewControllerWithIdentifier("LocationTitleViewController") as! LocationTitleViewController
-            locationTitleViewController.delegate = self
-            
-            self.navigationController?.pushViewController(locationTitleViewController, animated: true)
             
         }
         
