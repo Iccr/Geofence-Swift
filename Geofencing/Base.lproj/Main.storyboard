@@ -125,16 +125,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vaJ-b3-Qiu">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vaJ-b3-Qiu">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="RmN-Yz-syD" appends="YES" id="Seq-Qn-01A"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jY2-ix-fvH">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jY2-ix-fvH">
                                 <rect key="frame" x="32" y="406" width="45" height="45"/>
                                 <color key="backgroundColor" red="0.3411764705882353" green="0.75294117647058822" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="4a5-em-OTQ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Detail"/>
@@ -142,7 +145,7 @@
                                     <action selector="btnAddTitle:" destination="Wub-mE-lxv" eventType="touchUpInside" id="AFw-K0-pgy"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fpe-UO-2Bj">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fpe-UO-2Bj">
                                 <rect key="frame" x="240" y="406" width="45" height="45"/>
                                 <color key="backgroundColor" red="0.3411764705882353" green="0.75294117647058822" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" image="locate_meScaled"/>
@@ -168,7 +171,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="vaJ-b3-Qiu" secondAttribute="trailing" id="8hH-fX-HVg"/>
+                            <constraint firstItem="vaJ-b3-Qiu" firstAttribute="leading" secondItem="RBb-vP-pnu" secondAttribute="leading" id="BTA-De-1mE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Fpe-UO-2Bj" secondAttribute="trailing" constant="19" id="CJr-0n-eWd"/>
+                            <constraint firstItem="vaJ-b3-Qiu" firstAttribute="top" secondItem="RBb-vP-pnu" secondAttribute="top" id="E6V-eG-x3V"/>
+                            <constraint firstItem="jY2-ix-fvH" firstAttribute="top" secondItem="Fpe-UO-2Bj" secondAttribute="top" id="Hpu-6I-dEq"/>
+                            <constraint firstItem="ilN-Rz-adW" firstAttribute="top" secondItem="jY2-ix-fvH" secondAttribute="bottom" constant="29" id="MTL-tM-dMd"/>
+                            <constraint firstItem="jY2-ix-fvH" firstAttribute="bottom" secondItem="Fpe-UO-2Bj" secondAttribute="bottom" id="NBm-bn-s77"/>
                             <constraint firstItem="TVN-aH-E7O" firstAttribute="top" secondItem="YZ5-yD-hC4" secondAttribute="bottom" constant="196" id="UkT-Qi-r0m"/>
+                            <constraint firstItem="vaJ-b3-Qiu" firstAttribute="bottom" secondItem="ilN-Rz-adW" secondAttribute="top" id="VcZ-CQ-DuM"/>
+                            <constraint firstItem="jY2-ix-fvH" firstAttribute="leading" secondItem="RBb-vP-pnu" secondAttribute="leadingMargin" constant="16" id="oDp-cq-4OC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TVN-aH-E7O" secondAttribute="trailing" constant="-99" id="zaw-eE-fW7"/>
                         </constraints>
                     </view>
