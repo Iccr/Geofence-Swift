@@ -222,19 +222,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Dw-Bt-SRh">
-                                <rect key="frame" x="40" y="145" width="240" height="30"/>
+                                <rect key="frame" x="40" y="225" width="240" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="HKb-ro-cpn"/>
-                                    <constraint firstAttribute="height" constant="30" id="yUG-qC-j7n"/>
+                                    <constraint firstAttribute="width" constant="240" id="g2N-tG-k85"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invitation Details " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ncg-Jl-jw9">
-                                <rect key="frame" x="78" y="82" width="165" height="36"/>
+                                <rect key="frame" x="78" y="158" width="165" height="36"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="50b-Z8-tNY"/>
-                                    <constraint firstAttribute="width" constant="165" id="gd3-bT-LQ0"/>
+                                    <constraint firstAttribute="height" constant="36" id="WY2-uj-34v"/>
+                                    <constraint firstAttribute="width" constant="165" id="imJ-00-dXc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -243,14 +242,10 @@
                         </subviews>
                         <color key="backgroundColor" red="0.66274509803921566" green="0.75294117647058822" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="3Dw-Bt-SRh" firstAttribute="leading" secondItem="Gyc-fD-Tuf" secondAttribute="leading" constant="40" id="0Ik-gj-ARe"/>
-                            <constraint firstItem="3Dw-Bt-SRh" firstAttribute="top" secondItem="Ncg-Jl-jw9" secondAttribute="bottom" constant="27" id="1d2-Xn-l0t"/>
-                            <constraint firstItem="3Dw-Bt-SRh" firstAttribute="top" secondItem="Ncg-Jl-jw9" secondAttribute="bottom" constant="27" id="2Yo-YR-bna"/>
-                            <constraint firstAttribute="trailing" secondItem="Ncg-Jl-jw9" secondAttribute="trailing" constant="77" id="Hej-Br-36O"/>
-                            <constraint firstAttribute="trailing" secondItem="3Dw-Bt-SRh" secondAttribute="trailing" constant="40" id="KAC-JB-DxM"/>
-                            <constraint firstItem="Ncg-Jl-jw9" firstAttribute="top" secondItem="Ba0-95-4KT" secondAttribute="bottom" constant="62" id="Q5a-14-rQn"/>
-                            <constraint firstItem="tsV-jy-0V9" firstAttribute="top" secondItem="3Dw-Bt-SRh" secondAttribute="bottom" constant="305" id="w3A-yL-afX"/>
-                            <constraint firstItem="Ncg-Jl-jw9" firstAttribute="leading" secondItem="Gyc-fD-Tuf" secondAttribute="leading" constant="78" id="yHN-6I-r9Q"/>
+                            <constraint firstItem="3Dw-Bt-SRh" firstAttribute="centerX" secondItem="Gyc-fD-Tuf" secondAttribute="centerX" id="7Mo-tL-XGy"/>
+                            <constraint firstItem="3Dw-Bt-SRh" firstAttribute="top" secondItem="Ncg-Jl-jw9" secondAttribute="bottom" constant="31" id="sOw-gz-RUt"/>
+                            <constraint firstItem="Ncg-Jl-jw9" firstAttribute="leading" secondItem="Gyc-fD-Tuf" secondAttribute="leading" constant="78" id="xkc-CB-rSm"/>
+                            <constraint firstItem="3Dw-Bt-SRh" firstAttribute="centerY" secondItem="Gyc-fD-Tuf" secondAttribute="centerY" id="zrY-Tf-EBO"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>

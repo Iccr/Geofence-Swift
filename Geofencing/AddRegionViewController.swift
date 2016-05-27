@@ -48,6 +48,8 @@
             btnDetail.layer.cornerRadius = 0.5 * btnDetail.bounds.size.width
             btnFindMe.layer.cornerRadius = 0.5 * btnFindMe.bounds.size.width
             let saveBtn = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: #selector(AddRegionViewController.save))
+            saveBtn.tintColor = UIColor.whiteColor()
+            self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
             self.navigationItem.rightBarButtonItem = saveBtn
         }
         
