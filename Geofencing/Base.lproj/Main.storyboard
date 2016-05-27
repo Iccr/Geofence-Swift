@@ -147,8 +147,23 @@
                                 <color key="backgroundColor" red="0.22352941176470589" green="0.61568627450980395" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" image="locate_meScaled"/>
                             </button>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="TVN-aH-E7O">
+                                <rect key="frame" x="205" y="216" width="200" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="196" id="uUL-nb-90O"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.transform.rotation.z">
+                                        <real key="value" value="-1.5700000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TVN-aH-E7O" firstAttribute="top" secondItem="YZ5-yD-hC4" secondAttribute="bottom" constant="196" id="UkT-Qi-r0m"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TVN-aH-E7O" secondAttribute="trailing" constant="-99" id="zaw-eE-fW7"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tV7-bY-wIS"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
