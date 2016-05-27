@@ -31,7 +31,7 @@
                                     <action selector="mpType:" destination="BYZ-38-t0r" eventType="valueChanged" id="mlv-hi-21o"/>
                                 </connections>
                             </segmentedControl>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AQE-Az-upf">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AQE-Az-upf">
                                 <rect key="frame" x="0.0" y="59" width="320" height="421"/>
                                 <color key="tintColor" red="0.94381816279999997" green="0.3337369637" blue="0.1559894805" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
@@ -78,7 +78,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="T4d-fs-mWN" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="3PQ-dK-9V8"/>
+                            <constraint firstAttribute="trailing" secondItem="AQE-Az-upf" secondAttribute="trailing" id="5En-hD-rxl"/>
+                            <constraint firstItem="AQE-Az-upf" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="7yL-5q-ek7"/>
                             <constraint firstItem="T4d-fs-mWN" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="99" id="GcW-46-GZx"/>
+                            <constraint firstItem="AQE-Az-upf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="IRO-tO-i5h"/>
+                            <constraint firstItem="AQE-Az-upf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="59" id="Six-qz-j9P"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Maps" id="S5Q-0N-8Ea"/>
