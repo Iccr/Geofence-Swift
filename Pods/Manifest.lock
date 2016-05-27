@@ -1,0 +1,10 @@
+PODS:
+  - NapySlider (0.2)
+
+DEPENDENCIES:
+  - NapySlider
+
+SPEC CHECKSUMS:
+  NapySlider: 2a4283bbc6ac8133e86c22fde7e40dd6dbcbcdce
+
+COCOAPODS: 0.39.0
