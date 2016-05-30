@@ -151,6 +151,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
     
     @IBAction func btnTestPoint(sender: UILongPressGestureRecognizer) {
         if sender.state == .Began{
+            let notification = UILocalNotification()
+            notification.fireDate = NSDate(timeIntervalSinceNow: 5)
+            notification.alertTitle = "GeoFence Me Updates"
             removeAnnotations()
             let location = sender.locationInView(mpView)
             let locationCordinate = self.mpView.convertPoint(location, toCoordinateFromView: self.mpView)
@@ -166,9 +169,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
             }
             if(contains(locationPoints, test: location)){
                 print("it is inside a polygon")
+                
+                notification.alertBody = "you are now inside a region"
             }else{
-                print("the point is outside the polygon")
+                notification.alertBody = "you are now outside a region"
             }
+            UIApplication.sharedApplication().scheduleLocalNotification(notification)
         }
     }
     
