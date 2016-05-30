@@ -34,7 +34,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
         setBtnRadious()
         initManager()
         initMapView()
-        
     }
     
     func initZoomSlider(){
@@ -94,6 +93,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
         }
     }
     
+    func notify(message: String){
+        if(self.isViewLoaded() && (self.view.window != nil)){
+            let alert = UIAlertController(title: "GeoFence ME updates", message: "\(message)", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "close", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }else{
+            let notification = UILocalNotification()
+            notification.fireDate = NSDate(timeIntervalSinceNow: 5)
+            notification.alertTitle = "GeoFence Me Updates"
+            notification.alertBody = message
+            notification.soundName = UILocalNotificationDefaultSoundName
+            UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        }
+    }
+
     func getPolygonPoints() -> [CGPoint]{
         var locationPoints = [CGPoint]()
         for singleLocation in allLocationInfo{
@@ -174,21 +188,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
     @IBAction func zoomSlider(sender: UISlider) {
         delta = sender.value
         centerMapOnLocation(center!)
-    }
-    
-    func notify(message: String){
-        if(self.isViewLoaded() && (self.view.window != nil)){
-            let alert = UIAlertController(title: "GeoFence ME updates", message: "\(message)", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "close", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
-        }else{
-            let notification = UILocalNotification()
-            notification.fireDate = NSDate(timeIntervalSinceNow: 5)
-            notification.alertTitle = "GeoFence Me Updates"
-            notification.alertBody = message
-            notification.soundName = UILocalNotificationDefaultSoundName
-            UIApplication.sharedApplication().scheduleLocalNotification(notification)
-        }
     }
     
     @IBAction func addRegion(sender: AnyObject) {
