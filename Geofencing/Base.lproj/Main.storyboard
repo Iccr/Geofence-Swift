@@ -22,9 +22,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <color key="tintColor" red="0.94381816279999997" green="0.3337369637" blue="0.1559894805" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="7gc-Do-Jyh" appends="YES" id="Rqe-Oq-fDd"/>
-                                </connections>
                             </mapView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="C2w-95-I5C">
                                 <rect key="frame" x="55" y="72" width="212" height="29"/>
@@ -105,11 +102,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="7gc-Do-Jyh">
-                    <connections>
-                        <action selector="btnTestPoint:" destination="BYZ-38-t0r" id="IR4-oJ-gmr"/>
-                    </connections>
-                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1152" y="351"/>
         </scene>
