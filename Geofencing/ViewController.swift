@@ -84,10 +84,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
         if(contains(getPolygonPoints(), test: pointOnView)){
             if(!inside){
                 print("you are inside close region")
+                inside = true
             }
         }else{
             if(inside){
                 print("you leave the polygon")
+                inside = false
             }
         }
         
