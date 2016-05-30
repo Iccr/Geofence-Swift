@@ -120,8 +120,9 @@
             }
         }
         
-        func AddRegionTitle(title: String) {
+        func AddRegionTitle(title: String, description: String) {
             polyRegion.title = title
+            polyRegion.description = description
             annotationTitle = title
         }
         

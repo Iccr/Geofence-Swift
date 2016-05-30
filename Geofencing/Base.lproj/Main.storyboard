@@ -266,6 +266,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="txtDescription" destination="E5R-cf-pd1" id="Otp-DL-Im1"/>
                         <outlet property="txtTitle" destination="3Dw-Bt-SRh" id="INN-KR-37W"/>
                     </connections>
                 </viewController>

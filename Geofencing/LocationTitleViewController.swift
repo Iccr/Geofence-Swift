@@ -9,27 +9,35 @@
 import UIKit
 
 protocol RegionNameDelegate {
-    func AddRegionTitle(title: String)
+    func AddRegionTitle(title: String, description: String)
 }
 
 class LocationTitleViewController: UIViewController {
     
+    
     var delegate: RegionNameDelegate? = nil
     var message = ""
     @IBOutlet weak var txtTitle: UITextField!
+    @IBOutlet weak var txtDescription: UITextField!
     
     override func viewDidLoad() {
-    
         super.viewDidLoad()
         let btnSave = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: #selector(LocationTitleViewController.save))
         self.navigationItem.rightBarButtonItem = btnSave
         // Do any additional setup after loading the view.
     }
     func save(){
+        var invitationTitle = ""
+        var invitationDescription = ""
+        
         if let title = txtTitle.text{
-            delegate?.AddRegionTitle(title)
+            invitationTitle = title
             self.navigationController?.popViewControllerAnimated(true)
         }
+        if let description = txtDescription.text{
+            invitationDescription = description
+        }
+        delegate?.AddRegionTitle(invitationTitle, description: invitationDescription)
     }
 
     override func didReceiveMemoryWarning() {

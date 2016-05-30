@@ -10,6 +10,7 @@
 import CoreLocation
 struct PolyRegion {
     var title = String()
+    var description = String()
     var vertices = [CLLocationCoordinate2D]()
     mutating func addVertice(vertice: CLLocationCoordinate2D){
         self.vertices.append(vertice)
