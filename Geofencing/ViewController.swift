@@ -78,46 +78,56 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
         longitude = location?.coordinate.longitude
         center = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
         let pointOnView: CGPoint = self.mpView.convertCoordinate(center!, toPointToView: self.mpView)
-        if(contains(getPolygonPoints(), test: pointOnView)){
-            if(!inside){
-                print("you are inside close region")
-                inside = true
-                notify("You are inside an area")
-            }
-        }else{
-            if(inside){
-                print("you leave the polygon")
-                inside = false
-                notify("You are outside an area")
+        checkAllLocationsForIntersection(pointOnView)
+    }
+    
+    func checkAllLocationsForIntersection(point: CGPoint){
+        for polygon in allLocationInfo{
+            if(checkIntersection(point, region: polygon)){
+                if(!inside){
+                    print("you entered the region: \(polygon.title)")
+                    notify(polygon.title, message: polygon.description)
+                    inside = true
+                }
+            }else{
+                if(inside){
+                    print("you leaved the place \(polygon.title)")
+                    notify(polygon.title, message: "bye bye")
+                    inside = false
+                }
             }
         }
     }
     
-    func notify(message: String){
+    func checkIntersection(point: CGPoint, region: PolyRegion) -> Bool {
+        var locationPoints = [CGPoint]()
+        let vertices = region.Vertices()
+        for vertex in vertices{
+            let locationPoint = self.mpView.convertCoordinate(vertex, toPointToView: self.mpView)
+            locationPoints.append(locationPoint)
+        }
+        if(contains(locationPoints, test: point)){
+            return true
+        }else{
+            return false
+        }
+    }
+    
+    func notify( title: String, message: String){
         if(self.isViewLoaded() && (self.view.window != nil)){
-            let alert = UIAlertController(title: "GeoFence ME updates", message: "\(message)", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: title, message: "\(message)", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "close", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }else{
             let notification = UILocalNotification()
             notification.fireDate = NSDate(timeIntervalSinceNow: 5)
-            notification.alertTitle = "GeoFence Me Updates"
+            notification.alertTitle = title
             notification.alertBody = message
             notification.soundName = UILocalNotificationDefaultSoundName
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
         }
     }
 
-    func getPolygonPoints() -> [CGPoint]{
-        var locationPoints = [CGPoint]()
-        for singleLocation in allLocationInfo{
-            let vertices = singleLocation.vertices
-            for vertex in vertices {
-                locationPoints.append(self.mpView.convertCoordinate(vertex, toPointToView: self.mpView))
-            }
-        }
-        return locationPoints
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
