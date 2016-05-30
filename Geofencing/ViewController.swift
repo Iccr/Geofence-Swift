@@ -178,33 +178,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
         delta = sender.value
         centerMapOnLocation(center!)
     }
-//    
-//    @IBAction func btnTestPoint(sender: UILongPressGestureRecognizer) {
-//        if sender.state == .Began{
-//            removeAnnotations()
-//            let location = sender.locationInView(mpView)
-//            let locationCordinate = self.mpView.convertPoint(location, toCoordinateFromView: self.mpView)
-//            let annotation = MKPointAnnotation()
-//            annotation.coordinate = locationCordinate
-//            self.mpView.addAnnotation(annotation)
-//            
-//            var locationPoints = [CGPoint]()
-//            for singleLocation in allLocationInfo{
-//                let vertices = singleLocation.vertices
-//                for vertex in vertices {
-//                    locationPoints.append(self.mpView.convertCoordinate(vertex, toPointToView: self.mpView))
-//                }
-//            }
-//            var testResult = ""
-//            if(contains(locationPoints, test: location)){
-//                testResult = "you are inside close region"
-//            }else{
-//                testResult = "you leave the polygon"
-//            }
-//            notify(testResult)
-//        }
-//    }
-    
+
     func notify(message: String){
         if(self.isViewLoaded() && (self.view.window != nil)){
             let alert = UIAlertController(title: "GeoFence ME updates", message: "\(message)", preferredStyle: UIAlertControllerStyle.Alert)
