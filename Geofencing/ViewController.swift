@@ -18,14 +18,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
     @IBOutlet weak var btnFindMe: UIButton!
     
     @IBOutlet weak var zoomSlider: UISlider!
-    
-    
-    
+
     var latitude: Double?
     var longitude: Double?
     var center: CLLocationCoordinate2D?
     var allLocationInfo = [PolyRegion]()
     var locationManager = CLLocationManager() //TODO: use abstract factory pattern
+    var inside = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,9 +75,35 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
+        
         latitude = location?.coordinate.latitude
         longitude = location?.coordinate.longitude
         center = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+        let pointOnView: CGPoint = self.mpView.convertCoordinate(center!, toPointToView: self.mpView)
+        
+        if(contains(getPolygonPoints(), test: pointOnView)){
+            if(!inside){
+                print("you are inside close region")
+            }
+        }else{
+            if(inside){
+                print("you leave the polygon")
+            }
+        }
+        
+        
+        
+    }
+    
+    func getPolygonPoints() -> [CGPoint]{
+        var locationPoints = [CGPoint]()
+        for singleLocation in allLocationInfo{
+            let vertices = singleLocation.vertices
+            for vertex in vertices {
+                locationPoints.append(self.mpView.convertCoordinate(vertex, toPointToView: self.mpView))
+            }
+        }
+        return locationPoints
     }
     
     override func didReceiveMemoryWarning() {
@@ -130,11 +156,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
         self.mpView.removeAnnotations(self.mpView.annotations)
     }
     
- 
-    
     @IBAction func btnFindMe(sender: UIButton) {
         centerMapOnLocation(center!)
     }
+    
     @IBAction func mpType(sender: AnyObject) {
         switch sender.selectedSegmentIndex {
         case 0:
@@ -151,37 +176,32 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
         delta = sender.value
         centerMapOnLocation(center!)
     }
-    
-    @IBAction func btnTestPoint(sender: UILongPressGestureRecognizer) {
-        if sender.state == .Began{
-                        removeAnnotations()
-            let location = sender.locationInView(mpView)
-            let locationCordinate = self.mpView.convertPoint(location, toCoordinateFromView: self.mpView)
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = locationCordinate
-            self.mpView.addAnnotation(annotation)
-            var locationPoints = [CGPoint]()
-            for singleLocation in allLocationInfo{
-                let vertices = singleLocation.vertices
-                for vertex in vertices {
-                    locationPoints.append(self.mpView.convertCoordinate(vertex, toPointToView: self.mpView))
-                }
-            }
-            var testResult = ""
-            
-            if(contains(locationPoints, test: location)){
-                print("you entered the region ")
-                  testResult = "you are inside close region"
-//                notification.alertBody = "you are now inside a region"
-            }else{
-                testResult = "you leave the polygon"
-//                notification.alertBody = "you are now outside a region"
-            }
-            
-            notify(testResult)
-            
-        }
-    }
+//    
+//    @IBAction func btnTestPoint(sender: UILongPressGestureRecognizer) {
+//        if sender.state == .Began{
+//            removeAnnotations()
+//            let location = sender.locationInView(mpView)
+//            let locationCordinate = self.mpView.convertPoint(location, toCoordinateFromView: self.mpView)
+//            let annotation = MKPointAnnotation()
+//            annotation.coordinate = locationCordinate
+//            self.mpView.addAnnotation(annotation)
+//            
+//            var locationPoints = [CGPoint]()
+//            for singleLocation in allLocationInfo{
+//                let vertices = singleLocation.vertices
+//                for vertex in vertices {
+//                    locationPoints.append(self.mpView.convertCoordinate(vertex, toPointToView: self.mpView))
+//                }
+//            }
+//            var testResult = ""
+//            if(contains(locationPoints, test: location)){
+//                testResult = "you are inside close region"
+//            }else{
+//                testResult = "you leave the polygon"
+//            }
+//            notify(testResult)
+//        }
+//    }
     
     func notify(message: String){
         if(self.isViewLoaded() && (self.view.window != nil)){
@@ -196,7 +216,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
             notification.soundName = UILocalNotificationDefaultSoundName
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
         }
-
     }
     
     @IBAction func addRegion(sender: AnyObject) {
