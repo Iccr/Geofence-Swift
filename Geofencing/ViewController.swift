@@ -18,7 +18,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
     @IBOutlet weak var btnFindMe: UIButton!
     
     @IBOutlet weak var zoomSlider: UISlider!
-
+    
     var latitude: Double?
     var longitude: Double?
     var center: CLLocationCoordinate2D?
@@ -75,26 +75,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.last
-        
         latitude = location?.coordinate.latitude
         longitude = location?.coordinate.longitude
         center = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
         let pointOnView: CGPoint = self.mpView.convertCoordinate(center!, toPointToView: self.mpView)
-        
         if(contains(getPolygonPoints(), test: pointOnView)){
             if(!inside){
                 print("you are inside close region")
                 inside = true
+                notify("You are inside an area")
             }
         }else{
             if(inside){
                 print("you leave the polygon")
                 inside = false
+                notify("You are outside an area")
             }
         }
-        
-        
-        
     }
     
     func getPolygonPoints() -> [CGPoint]{
@@ -178,7 +175,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
         delta = sender.value
         centerMapOnLocation(center!)
     }
-
+    
     func notify(message: String){
         if(self.isViewLoaded() && (self.view.window != nil)){
             let alert = UIAlertController(title: "GeoFence ME updates", message: "\(message)", preferredStyle: UIAlertControllerStyle.Alert)
