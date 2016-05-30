@@ -34,6 +34,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
         setBtnRadious()
         initManager()
         initMapView()
+        
     }
     
     func initZoomSlider(){
@@ -129,6 +130,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
         self.mpView.removeAnnotations(self.mpView.annotations)
     }
     
+ 
+    
     @IBAction func btnFindMe(sender: UIButton) {
         centerMapOnLocation(center!)
     }
@@ -151,10 +154,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
     
     @IBAction func btnTestPoint(sender: UILongPressGestureRecognizer) {
         if sender.state == .Began{
-            let notification = UILocalNotification()
-            notification.fireDate = NSDate(timeIntervalSinceNow: 5)
-            notification.alertTitle = "GeoFence Me Updates"
-            removeAnnotations()
+                        removeAnnotations()
             let location = sender.locationInView(mpView)
             let locationCordinate = self.mpView.convertPoint(location, toCoordinateFromView: self.mpView)
             let annotation = MKPointAnnotation()
@@ -167,15 +167,36 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
                     locationPoints.append(self.mpView.convertCoordinate(vertex, toPointToView: self.mpView))
                 }
             }
+            var testResult = ""
+            
             if(contains(locationPoints, test: location)){
-                print("it is inside a polygon")
-                
-                notification.alertBody = "you are now inside a region"
+                print("you entered the region ")
+                  testResult = "you are inside close region"
+//                notification.alertBody = "you are now inside a region"
             }else{
-                notification.alertBody = "you are now outside a region"
+                testResult = "you leave the polygon"
+//                notification.alertBody = "you are now outside a region"
             }
+            
+            notify(testResult)
+            
+        }
+    }
+    
+    func notify(message: String){
+        if(self.isViewLoaded() && (self.view.window != nil)){
+            let alert = UIAlertController(title: "GeoFence ME updates", message: "\(message)", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "close", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }else{
+            let notification = UILocalNotification()
+            notification.fireDate = NSDate(timeIntervalSinceNow: 5)
+            notification.alertTitle = "GeoFence Me Updates"
+            notification.alertBody = message
+            notification.soundName = UILocalNotificationDefaultSoundName
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
         }
+
     }
     
     @IBAction func addRegion(sender: AnyObject) {
