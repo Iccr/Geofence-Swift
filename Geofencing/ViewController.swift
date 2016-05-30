@@ -25,11 +25,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
     var longitude: Double?
     var center: CLLocationCoordinate2D?
     var allLocationInfo = [PolyRegion]()
-    var locationManager = CLLocationManager()
+    var locationManager = CLLocationManager() //TODO: use abstract factory pattern
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initZoomSlider()
+        initZoomSlider() //TODO: may be builder pattern fits here
         initNavigationMenu()
         setBtnRadious()
         initManager()
@@ -105,7 +105,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, RegionDelegat
             var vertices = annotationLocations
             let line = MKPolygon(coordinates: &vertices, count: vertices.count)
             mpView.addOverlays([line], level: .AboveRoads)
-            let annotation = MKPointAnnotation() //user abstract factory pattern here
+            let annotation = MKPointAnnotation() //TODO: user abstract factory pattern here
             annotation.coordinate = region.Vertices().first!
             annotation.title = region.title
             mpView.addAnnotation(annotation)

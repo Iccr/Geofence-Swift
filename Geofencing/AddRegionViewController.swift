@@ -35,24 +35,43 @@
         
         override func viewDidLoad() {
             super.viewDidLoad()
-            zoomSlider.setValue(delta, animated: false)
-            mpView.delegate = self
-            mpView.showsUserLocation = true
-            mpView.mapType = MKMapType.Satellite
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.startUpdatingLocation()
-            latitude = locationManager.location?.coordinate.latitude
-            longitude = locationManager.location?.coordinate.longitude
-            center = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
-            centerMapOnLocation(center!)
-            btnDetail.layer.cornerRadius = 0.5 * btnDetail.bounds.size.width
-            btnFindMe.layer.cornerRadius = 0.5 * btnFindMe.bounds.size.width
+            initZoomSlider()
+            initMapView()
+            initManager()
+            setBtnRadious()
+            initNavigationMenu()
+        }
+        
+        func initNavigationMenu(){
             let saveBtn = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: #selector(AddRegionViewController.save))
             saveBtn.tintColor = UIColor.whiteColor()
             self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
             self.navigationItem.rightBarButtonItem = saveBtn
         }
         
+        func setBtnRadious(){
+            btnDetail.layer.cornerRadius = 0.5 * btnDetail.bounds.size.width
+            btnFindMe.layer.cornerRadius = 0.5 * btnFindMe.bounds.size.width
+        }
+        
+        func initZoomSlider(){
+            zoomSlider.setValue(delta, animated: false)
+        }
+        
+        func initMapView(){
+            mpView.delegate = self
+            mpView.showsUserLocation = true
+            mpView.mapType = MKMapType.Satellite
+            latitude = locationManager.location?.coordinate.latitude
+            longitude = locationManager.location?.coordinate.longitude
+            center = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+            centerMapOnLocation(center!)
+        }
+        
+        func initManager(){
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+        }
         
         @IBAction func btnAddPin(sender: UILongPressGestureRecognizer) {
             if sender.state == .Began{
